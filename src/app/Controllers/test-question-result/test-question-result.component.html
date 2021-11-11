@@ -1,0 +1,23 @@
+<div *ngIf="question" >
+  <p>{{ question.question }}</p>
+  <p class="fw-bold" >Count to select {{ question.maxSelectedOptionsCount }} options!</p>
+  <ul>
+    <li class="form-check" *ngFor="let opt of question.options;index as i">
+      <span class="bg-primary text-white" *ngIf="opt.selected">&nbsp;&#10003;&nbsp;</span>
+      <span class="bg-secondary text-white" *ngIf="!opt.selected">&nbsp;&times;&nbsp;</span>
+      {{opt.answer}}
+      <div *ngIf="opt.correct; then thenBlock else elseBlock"></div>
+      <span class="fw-bold">
+        <ng-template #thenBlock>
+          <span *ngIf="opt.selected" class="bg-success text-white rounded">&nbsp;&#10003;&nbsp;</span>
+          <span *ngIf="!opt.selected" class="bg-danger text-white rounded">&nbsp;&times;&nbsp;</span>
+        </ng-template>
+        <ng-template #elseBlock>
+          <span *ngIf="opt.selected" class="bg-danger text-white rounded">&nbsp;&times;&nbsp;</span>
+        </ng-template>
+      </span>
+    </li>
+  </ul>
+  <hr/>
+</div>
+

@@ -1,0 +1,13 @@
+<router-outlet></router-outlet>
+<div *ngIf="(sessionService.session$ | async) && !sessionService.session?.endDateTime" class="fixed-bottom container-fluid">
+  <div class="row">
+    <button class="col btn m-1" *ngFor="let question of (sessionService.session$ | async).questions; index as i"
+      [ngClass]="{ 'btn-dark': (sessionService.selectedQuestion$ | async).id === i, 'btn-primary': isSelected(i), 'btn-secondary': !isSelected(i)}"
+      (click)="select(i)">
+      {{ i + 1 }}
+    </button>
+    <button (click)="finishTest();" class="col-auto btn btn-success m-1">
+      Finish
+    </button>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+<div *ngIf="sessionService.session$ | async" class="row" >
+  <app-test-question-result *ngFor="let question of sessionService.session.questions;" [question]="question" ></app-test-question-result>
+</div>

@@ -1,0 +1,21 @@
+<h1 class="text-center" >Tests</h1>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Questions</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let test of tests; index as i">
+      <th scope="row">{{ test.id }}</th>
+      <td>{{ test.name }}</td>
+      <td>{{ test.maxCountOfQuestions }}</td>
+      <td>{{ test.testLengthInMinuts }}</td>
+      <td><button  [ngClass]="{'btn': true, 'btn-primary': !test.sessionAvaible, 'btn-success': test.sessionAvaible}" [routerLink]="test.sessionAvaible ? ['/', 'test', test.sessionAvaible, '0'] : ['/', 'proceed', test.id]">{{ test.sessionAvaible ? "Continue" : "Start" }}</button></td>
+    </tr>
+  </tbody>
+</table>

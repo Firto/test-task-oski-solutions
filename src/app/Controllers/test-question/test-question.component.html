@@ -1,0 +1,13 @@
+<div *ngIf="(sessionService.selectedQuestion$ | async) && (sessionService.session$ | async)" >
+  <p>{{ sessionService.session.questions[sessionService.selectedQuestion.id].question }}</p>
+  <p class="fw-bold" >Select {{ sessionService.session.questions[sessionService.selectedQuestion.id].maxSelectedOptionsCount }} options!</p>
+  <div>
+    <div class="form-check" *ngFor="let opt of sessionService.session.questions[sessionService.selectedQuestion.id].options;index as i">
+      <input [checked]="opt.selected" (click)="toggleQuestionOption(i, $event)" class="form-check-input" type="checkbox" value="" id="{{opt.id}}">
+      <label class="form-check-label" for="{{opt.id}}">
+        {{opt.answer}}
+      </label>
+    </div>
+  </div>
+</div>
+

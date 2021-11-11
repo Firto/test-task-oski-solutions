@@ -1,0 +1,3 @@
+<div *ngIf="(this.loaderService.isLoading | async) !== null" class="loader">
+    <div class="animate">{{(this.loaderService.isLoading | async).text$ | async}}</div>
+</div>

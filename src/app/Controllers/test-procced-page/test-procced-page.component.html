@@ -1,0 +1,11 @@
+<div class="container" *ngIf="model">
+  <h1 class="text-center" >{{ model.name }}</h1>
+  <p>{{ model.description }}</p>
+  <div *ngIf="!model.sessionAvaible" class="form-check">
+    <input (click)="agreed = !agreed" class="form-check-input" type="checkbox" value="" id="agree">
+    <label class="form-check-label" for="agree">
+      I agree to start
+    </label>
+  </div>
+  <button [disabled]="!agreed && !model.sessionAvaible" (click)="startSession()" class="btn btn-primary text-center">{{ model.sessionAvaible ? "Continue" : "Proceed" }}</button>
+</div>
